@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#05070f">
+<title>Roubo Relampago</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="on">
+<div id="grid"></div>
+
+<section id="menu" class="screen">
+  <div class="panel">
+    <h1>Roubo<span>Relampago</span></h1>
+    <p class="sub">Roube a joia quando as luzes apagarem</p>
+    <button class="big" data-go="online">Modo Online</button>
+    <button class="big alt" data-go="local">Modo Local</button>
+  </div>
+</section>
+
+<section id="local" class="screen" hidden>
+  <div class="panel">
+    <h2>Modo Local</h2>
+    <p class="sub">Todos no mesmo aparelho</p>
+    <label>Jogadores
+      <select id="n"><option>2</option><option>3</option><option selected>4</option></select>
+    </label>
+    <button class="big" id="startLocal">Jogar</button>
+    <button class="link" data-go="menu">Voltar</button>
+  </div>
+</section>
+
+<section id="online" class="screen" hidden>
+  <div class="panel">
+    <h2>Modo Online</h2>
+    <p class="sub">Funciona entre celular, tablet e computador</p>
+    <button class="big" id="create">Criar sala</button>
+    <div class="or">ou entre com um código</div>
+    <input id="code" maxlength="4" placeholder="CÓDIGO" autocapitalize="characters" autocomplete="off">
+    <button class="big alt" id="join">Entrar na sala</button>
+    <p id="status" class="sub"></p>
+    <button class="link" data-go="menu">Voltar</button>
+  </div>
+</section>
+
+<section id="lobby" class="screen" hidden>
+  <div class="panel">
+    <h2>Sala <b id="room"></b></h2>
+    <p class="sub">Convide de 2 a 4 jogadores</p>
+    <button class="alt" id="share">Copiar link da sala</button>
+    <div id="seats"></div>
+    <button class="big" id="start">Iniciar</button>
+    <p id="wait" class="sub">Aguardando o anfitrião iniciar…</p>
+    <button class="link" data-go="menu">Sair</button>
+  </div>
+</section>
+
+<main id="game" class="screen" hidden>
+  <div id="spot"></div>
+  <div class="zone z0" style="--c:#00e5ff" hidden></div><div class="zone z1" style="--c:#7dff4f" hidden></div><div class="zone z2" style="--c:#ffc400" hidden></div><div class="zone z3" style="--c:#ff4d6d" hidden></div>
+  <div id="stage">
+    <svg id="gem" viewBox="0 0 100 100"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e8fbff"/><stop offset="1" stop-color="#19b6e8"/></linearGradient></defs><polygon points="50,6 90,50 50,94 10,50" fill="url(#g)" stroke="#7df3ff" stroke-width="3"/><polygon points="50,6 90,50 50,50" fill="#fff" opacity=".55"/><polygon points="50,50 90,50 50,94" fill="#0a7fb0" opacity=".45"/></svg>
+    <div id="msg"></div>
+    <div id="goal"></div>
+    <div id="hint"></div>
+  </div>
+  <div class="pl tl" style="--c:#00e5ff"><div class="hand"></div><div class="row"><div class="sc"><small>AZUL</small><b>0</b></div></div></div>
+  <div class="pl tr" style="--c:#7dff4f"><div class="hand"></div><div class="row"><div class="sc"><small>VERDE</small><b>0</b></div></div></div>
+  <div class="pl bl" style="--c:#ffc400"><div class="hand"></div><div class="row"><div class="sc"><small>AMARELO</small><b>0</b></div></div></div>
+  <div class="pl br" style="--c:#ff4d6d"><div class="hand"></div><div class="row"><div class="sc"><small>VERMELHO</small><b>0</b></div></div></div>
+  <div id="over" hidden>
+    <div class="panel">
+      <h2 id="winner"></h2>
+      <button class="big" id="again">Jogar de novo</button>
+      <button class="link" data-go="menu">Menu</button>
+    </div>
+  </div>
+  <button id="quit" data-go="menu" aria-label="Sair">✕</button>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
